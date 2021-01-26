@@ -16,12 +16,12 @@ coloredlogs.install(level='DEBUG', logger=logger)
 class CommandLogger(monitoring.CommandListener):
 
     def started(self, event):
-        logger.debug("Command {0.command_name} with request id "
+        logger.info(" Command {0.command_name} with request id "
                  "{0.request_id} started on server "
                  "{0.connection_id}".format(event))
 
     def succeeded(self, event):
-        logger.info("Command {0.command_name} with request id "
+        logger.debug("Command {0.command_name} with request id "
                  "{0.request_id} on server {0.connection_id} "
                  "succeeded in {0.duration_micros} "
                  "microseconds".format(event))
