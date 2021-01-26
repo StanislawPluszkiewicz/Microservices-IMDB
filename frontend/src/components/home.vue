@@ -1,8 +1,8 @@
 <template>
-  <div id="home">
+  
       <b-container>
       <b-row>
-        Movies List
+        <h3>Movies List</h3>
       </b-row>
       <b-row class="card-list">
         <b-card-group deck>
@@ -29,7 +29,6 @@
         </b-card-group>
       </b-row>
       </b-container>
-    </div>
 </template>
 
 <script>
@@ -135,13 +134,6 @@
 };
 </script>
 <style>
-  #home {
-    color: #000000;
-    padding-top: 100px;
-    padding-bottom: 15px;
-    min-height: 100%;
-  }
-
   .card-list{
     padding-top: 20px;
   }

@@ -6,7 +6,7 @@
         <b-col cols="2">
           <router-link :to="{ name: 'Home' }">LOGO</router-link>
         </b-col>
-        <b-col >
+        <b-col>
           <b-input-group>
             <b-form-input class="nav-search" placeholder="Search"></b-form-input>
             <b-button class="btn-search" variant="info"><v-icon name="search"/></b-button>
@@ -21,7 +21,9 @@
       </b-row>
       </b-container>
     </div>
+    <div id="body">
     <router-view></router-view><!--Most important thing. Used to display components-->
+    </div>
   </div>
 </template>
 
@@ -41,6 +43,15 @@ export default {
   background-color: #d6d7d2;
   min-height: 100%;
 }
+
+#body {
+    color: #000000;
+    padding-top: 100px;
+    padding-bottom: 15px;
+    min-height: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+  }
 
 #header {
   color: #ffffff;

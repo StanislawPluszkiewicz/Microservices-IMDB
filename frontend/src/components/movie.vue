@@ -1,8 +1,37 @@
 <template>
-  <div>
-    <p>Id: {{ movie.id }}</p>
-    <p>Title: {{ movie.title }}</p>
-    <p>Description: {{ movie.description }}</p>
+  <div class="movie-detail">
+    <div class="header">
+      <b-row>
+        <h1><b>{{ movie.title }}</b></h1>
+      </b-row>
+      <b-row>
+        <h3>{{ movie.type }} | {{ movie.date.begin }}-{{ movie.date.end }}</h3> 
+      </b-row>
+    </div>
+    <div class="body">
+      <b-row>
+        <div class="images">
+          <b-col>
+            <b-carousel
+              id="carousel-1"
+              v-model="slide"
+              :interval="4000"
+              controls
+              indicators
+              background="#ababab"
+              img-width="1024"
+              img-height="480"
+              style="text-shadow: 1px 1px 2px #333;"
+              @sliding-start="onSlideStart"
+              @sliding-end="onSlideEnd">
+              <div cols="2" v-for="(image, index) in movie.images" :key='`image-${index}`'>
+                <b-carousel-slide :img-src="image"></b-carousel-slide>
+              </div>  
+            </b-carousel>
+          </b-col>
+        </div>
+      </b-row>
+    </div>
   </div>
 </template>
 <script>
@@ -32,8 +61,15 @@
         {
           id: 1,
           title: 'Doctor Who',
-          image: 'https://upload.wikimedia.org/wikipedia/en/0/05/Doctor_Who_-_Current_Titlecard.png',
-          description: 'The further adventures in time and space of the alien adventurer known as the Doctor and their companions from planet Earth.'
+          images: ['https://upload.wikimedia.org/wikipedia/en/0/05/Doctor_Who_-_Current_Titlecard.png','https://upload.wikimedia.org/wikipedia/commons/e/ef/The_Walking_Dead_2010_logo.svg','https://upload.wikimedia.org/wikipedia/fr/5/52/Logo_Lupin-Dans-l%27ombre-d%27Ars%C3%A8ne.jpg'],
+          description: 'The further adventures in time and space of the alien adventurer known as the Doctor and their companions from planet Earth.',
+          type: 'TV-Series',
+          date: {
+            begin:'2005',
+            end:''
+          },
+          
+        
         },
         {
           id: 2,
