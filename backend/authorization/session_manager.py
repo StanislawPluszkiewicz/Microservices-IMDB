@@ -14,7 +14,7 @@ class SessionManager:
     SESSION_TIMEOUT_DEFAULT = 1800 # 30 minutes
     
     @staticmethod
-    def create(String sessionData):
+    def create(sessionData):
         sessionId = generate_session_id()
         SessionManager.update(sessionId, sessionData)
         return sessionId
@@ -22,31 +22,31 @@ class SessionManager:
     @staticmethod
     def update(sessionId, sessionData):
         r.put(sessionId, sessionData)
-        r.expire(sessionId, getSessionTimeout())
+        r.expire(sessionId, SessionManager.getSessionTimeout())
 
     @staticmethod
     def get(sessionId):
         sessionData = r.get(sessionId)
         if sessionData is not None:
-            r.expire(sessionId, getSessionTimeout())
+            r.expire(sessionId, SessionManager.getSessionTimeout())
         return sessionData
     
     @staticmethod
     def refresh(sessionId):
-        r.expire(sessionId, getSessionTimeout())
+        r.expire(sessionId, SessionManager.getSessionTimeout())
 
     @staticmethod
     def remove(sessionId):
         r.remove(sessionId)
 
     @staticmethod
-    def setSessionTimeout(timeout=SESSION_TIMEOUT_DEFAULT):
-        r.set(SessionManager.SESSION_TIMEOUT_KEY, timeout)
+    def setSessionTimeout(timeout=SessionManager.SESSION_TIMEOUT_DEFAULT):
+        r.put(SessionManager.SESSION_TIMEOUT_KEY, timeout)
 
     @staticmethod
     def getSessionTimeout():
         timeout = r.get(SessionManager.SESSION_TIMEOUT_KEY)
         if timeout is None:
-            timeout = SESSION_TIMEOUT_DEFAULT
-            setSessionTimeout(timeout)
+            timeout = SessionManager.SESSION_TIMEOUT_DEFAULT
+            SessionManager.setSessionTimeout(timeout)
         return int(timeout)
