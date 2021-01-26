@@ -101,5 +101,5 @@ def example_usage():
     insert_note()
     
 
-
-example_usage()
+if __name__ == '__main__':
+    example_usage()
