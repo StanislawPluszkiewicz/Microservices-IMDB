@@ -2,7 +2,7 @@ import pymongo
 import hashlib, uuid
 import copy
 
-client = pymongo.MongoClient("mongodb+srv://stan:root@imdb.ewvcu.mongodb.net/IMDB?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://admin:admin@imdb.ewvcu.mongodb.net/IMDB?retryWrites=true&w=majority")
 db = client.test
 database_name = "IMDB"
 
