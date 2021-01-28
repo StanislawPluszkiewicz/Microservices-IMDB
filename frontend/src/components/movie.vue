@@ -1,4 +1,5 @@
 <template>
+<b-container>
   <div class="movie-detail">
     <div class="header">
       <b-row>
@@ -9,30 +10,42 @@
       </b-row>
     </div>
     <div class="body">
-      <b-row>
-        <div class="images">
+        <div id="main">
+            <div class="player">
+              <b-embed
+                type="iframe"
+                aspect="16by9"
+                :src="movie.trailer"
+                allowfullscreen>
+              </b-embed>
+            </div>
+            <div class="tags">
+                <div :style="{width: computeSizeTag(tag) +'px'}" class="tag" v-for="(tag, index) in movie.genres" :key='`tag-${index}`'>
+                  {{tag}}
+                </div>
+            </div>
+            <div class="desc">
+              <h3><b>Synopsis</b></h3>
+              <p>{{movie.description}}</p>
+            </div>
+        </div>
+        <div id="carousel">
           <b-col>
             <b-carousel
               id="carousel-1"
-              v-model="slide"
               :interval="4000"
               controls
-              indicators
-              background="#ababab"
-              img-width="1024"
-              img-height="480"
-              style="text-shadow: 1px 1px 2px #333;"
-              @sliding-start="onSlideStart"
-              @sliding-end="onSlideEnd">
+              background="#d6d7d2"
+              class="car">
               <div cols="2" v-for="(image, index) in movie.images" :key='`image-${index}`'>
-                <b-carousel-slide :img-src="image"></b-carousel-slide>
+                <b-carousel-slide :img-src="image" class="car-image"/>
               </div>  
             </b-carousel>
           </b-col>
         </div>
-      </b-row>
     </div>
   </div>
+</b-container>
 </template>
 <script>
   export default {
@@ -53,6 +66,11 @@
     },
 
     methods: {
+      computeSizeTag(tag)
+      {
+        console.log(tag.length * 12)
+        return tag.length * 12
+      },
       fetchData() {
         console.log("Id: " + this.$route.params.id)
 
@@ -61,9 +79,16 @@
         {
           id: 1,
           title: 'Doctor Who',
-          images: ['https://upload.wikimedia.org/wikipedia/en/0/05/Doctor_Who_-_Current_Titlecard.png','https://upload.wikimedia.org/wikipedia/commons/e/ef/The_Walking_Dead_2010_logo.svg','https://upload.wikimedia.org/wikipedia/fr/5/52/Logo_Lupin-Dans-l%27ombre-d%27Ars%C3%A8ne.jpg'],
+          images: ['https://upload.wikimedia.org/wikipedia/en/0/05/Doctor_Who_-_Current_Titlecard.png','https://upload.wikimedia.org/wikipedia/commons/e/ef/The_Walking_Dead_2010_logo.svg','https://fr.timecity.eu/_clientfiles/brands/south_park_logo.jpg'],
           description: 'The further adventures in time and space of the alien adventurer known as the Doctor and their companions from planet Earth.',
           type: 'TV-Series',
+          genres: [
+            "Adventure",
+            "Drama",
+            "Family",
+            "Mystery",
+            "Sci-Fi"],
+          trailer: 'https://www.youtube.com/embed/vkEB0ysv7sM?width=200px',
           date: {
             begin:'2005',
             end:''
@@ -131,3 +156,32 @@
     }
   }
 </script>
+<style>
+
+.player{
+  width: 80%;
+}
+
+.desc{
+  margin-top: 3%;
+  text-align: left;
+}
+
+.desc p{
+  font-size: 20px;
+}
+
+.tags{
+
+}
+
+.tag{
+  margin: 10px;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+  border-color:#17a2b8 ;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+</style>
