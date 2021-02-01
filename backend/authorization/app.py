@@ -1,4 +1,8 @@
 import flask
+from flask import request
+import sys
+import util
+
 
 app = flask.Flask(__name__)
 
@@ -6,15 +10,26 @@ app = flask.Flask(__name__)
 def index():
     return 'Index Page'
 
-@app.route('/token', methods = ['GET'])
-def login():
-    username = flask.request.form['username']
-    password = flask.request.form['password']
+_HEADERS_SESSION_TOKEN_NAME = 'token'
 
-    response = flask.make_response()
-    # response.headers['SetCookie'] = 'session_token=42'
-    response.set_cookie('session_token', '42')
-    response.set_cookie('coucou', str(username + ' ' + password))
-    # flask.redirect(flask.url_for('index'))
-    return response
+def check_session_token_is_valid(session_token):
+    pass
+
+# Example POST request
+# {
+#     "route": "",
+#     "data": {}
+# }
+# cookies.token -> session_token
+@app.route('/auth', methods=['GET', 'POST'])
+def authorize():
+    error = None
+    if request.method == 'POST':
+        session_token = None
+        if _HEADERS_SESSION_TOKEN_NAME in request.cookies:
+            session_token = request.cookies
+        check_session_token_is_valid(session_token)
+
+    flask.flash(error)    
+    return util.response(error == None, '', {})
 
