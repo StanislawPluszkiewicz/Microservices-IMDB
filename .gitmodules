@@ -13,3 +13,9 @@
 [submodule "modules/module_Front"]
 	path = modules/module_Front
 	url = git@github.com:StanislawPluszkiewicz/Microservices-IMDB-m-Front.git
+[submodule "modules/module_Search"]
+	path = modules/module_Search
+	url = git@github.com:StanislawPluszkiewicz/Microservices-IMDB-m-Search.git
+[submodule "modules/module_Movie"]
+	path = modules/module_Movie
+	url = git@github.com:StanislawPluszkiewicz/Microservices-IMDB-m-Movie.git
