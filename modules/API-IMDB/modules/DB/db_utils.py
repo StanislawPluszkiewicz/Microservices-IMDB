@@ -4,7 +4,7 @@ from mongoengine import (
     StringField, ReferenceField, DateTimeField, FloatField, IntField, ListField, BooleanField
 )
 import datetime
-import modules.module_DB.log
+import modules.DB.log
 
 
 _MONGO_DB_HOST = "mongodb+srv://admin:admin@imdb.ewvcu.mongodb.net/IMDB?retryWrites=true&w=majority"
