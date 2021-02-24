@@ -1,37 +1,37 @@
 version: '3'
 services:
   authentication:
-    build: ./modules/module_Authentication
+    build: ./modules/Authentication
     container_name: authentication
     ports:
      - "5002:5002"
   authorization:
-    build: ./modules/module_Authorization
+    build: ./modules/Authorization
     container_name: authorization
     ports:
      - "5003:5003"
   parser:
-    build: ./modules/module_API-IMDB
+    build: ./modules/API-IMDB
     container_name: parser
     ports:
      - "5013:5013"
   comment:
-    build: ./modules/module_Comment
+    build: ./modules/Comment
     container_name: comment
     ports:
      - "5005:5005"
   movie:
-    build: ./modules/module_Movie
+    build: ./modules/Movie
     container_name: movie
     ports:
      - "5011:5011"
   search:
-    build: ./modules/module_Search
+    build: ./modules/Search
     container_name: search
     ports:
      - "5012:5012"
   front:
-    build: ./modules/module_Front
+    build: ./modules/Front
     container_name: front
     ports:
      - "8080:8080"

@@ -1,0 +1,9 @@
+flask
+flask_cors
+requests 
+uuid
+mongoengine
+coloredlogs
+dnspython
+flask-restplus
+pymongo

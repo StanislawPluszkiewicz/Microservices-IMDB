@@ -1,0 +1,7 @@
+flask
+flask_cors
+requests 
+uuid
+coloredlogs
+dnspython
+flask-restplus
