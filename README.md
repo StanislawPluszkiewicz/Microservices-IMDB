@@ -27,7 +27,7 @@ Une fois que tu es sur le front (localhost:8080), tu peux te créer un compte, o
 
 # Récupération du projet
 
-- _git clone git@github.com:StanislawPluszkiewicz/Microservices-IMDB.git_ 
+- _git clone -b Rendu_2021 git@github.com:StanislawPluszkiewicz/Microservices-IMDB.git_ 
 - ~~_git submodule update --init --recursive_ to get all submodules.~~ Sur cette branche, il n'y a pas de sous-modules
 
 - Si ça ne marche pas, il faut ajouter sa clé ssh sur git.
